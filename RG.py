@@ -12,6 +12,8 @@ import matplotlib.patches as patches
 from astropy.table import vstack
 from sklearn.neighbors.kde import KernelDensity
 
+plt.ion()
+
 def statuscounter(i,d):
 	
 	if np.remainder(i,d)==0:

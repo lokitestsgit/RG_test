@@ -27,16 +27,6 @@ def FITStablesaver(T,nfn):
 		os.remove(nfn)
 		T.write(nfn, format='fits')
 
-def tableprep(fn):
-	
-	""" Clean the tables and add some convenient columns. """
-	
-	T = Table.read(fn)
-	nfn = fn.replace('.fits', '_2.fits')# New table file name
-
-	T = make_em(T)
-	FITStablesaver(T, nfn)
-
 def dataload():
 	
 	""" Load the calibrating sample (A) and sample with unknown 
@@ -98,7 +88,7 @@ def defstuff():
 	xlimits = (0.3 ,3.0) # X-axis plot limits
 	bw = 0.01 # histogram bin width -- not global!
 	nbin = (max(rng)-min(rng))/bw # How many bins for histogram.
-	#~ lPbw = 0.025 # log period bin width
+
 	################# CAREFUL!!!!! #####################
 	lPbw = 0.025 # log period bin width
 	
@@ -418,4 +408,3 @@ def toploop():
 dataload()
 defstuff()
 toploop()
-#FITStablesaver(outTab, "BLG_estM-wEs.fits")
